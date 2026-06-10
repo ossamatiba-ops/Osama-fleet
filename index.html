@@ -15,26 +15,36 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Cairo',sans-serif;min-height:100vh;background:#0b1f3a;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem 1rem}
+.install-banner{display:none;background:#f5a623;color:#0b1f3a;border-radius:14px;padding:1rem 1.25rem;width:100%;max-width:420px;margin-bottom:1rem;text-align:center}
+.install-banner p{font-size:.85rem;font-weight:700;margin-bottom:.6rem}
+.install-btn{background:#0b1f3a;color:#f5a623;border:none;border-radius:10px;padding:10px 20px;font-family:'Cairo',sans-serif;font-size:.9rem;font-weight:800;cursor:pointer;width:100%}
 .logo{text-align:center;margin-bottom:2.5rem}
 .logo-icon{width:80px;height:80px;background:linear-gradient(135deg,#1a6eff,#0044cc);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;box-shadow:0 0 0 12px rgba(26,110,255,.15)}
 .logo-icon svg{width:40px;height:40px;fill:none;stroke:#fff;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .logo h1{color:#fff;font-size:1.6rem;font-weight:800;margin-bottom:4px}
 .logo .sub{color:#f5a623;font-size:1rem;font-weight:700}
 .logo .by{color:rgba(255,255,255,.4);font-size:.78rem;margin-top:4px}
-.cards{display:flex;flex-direction:column;gap:1rem;width:100%;max-width:400px}
-.app-card{background:#fff;border-radius:18px;padding:1.5rem 1.75rem;display:flex;align-items:center;gap:1.25rem;text-decoration:none;box-shadow:0 8px 40px rgba(0,0,0,.25);transition:transform .2s,box-shadow .2s}
+.cards{display:flex;flex-direction:column;gap:1rem;width:100%;max-width:420px}
+.app-card{background:#fff;border-radius:18px;padding:1.5rem 1.75rem;display:flex;align-items:center;gap:1.25rem;text-decoration:none;box-shadow:0 8px 40px rgba(0,0,0,.25);transition:transform .2s,box-shadow .2s;cursor:pointer;border:none;width:100%;font-family:'Cairo',sans-serif}
 .app-card:hover{transform:translateY(-3px);box-shadow:0 14px 50px rgba(0,0,0,.35)}
-.app-card:active{transform:translateY(0)}
+.app-card:active{transform:scale(.98)}
 .card-icon{width:54px;height:54px;border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .card-icon svg{width:28px;height:28px;fill:none;stroke:#fff;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .card-text{text-align:right;flex:1}
 .card-text h2{font-size:1rem;font-weight:800;color:#0b1f3a;margin-bottom:3px}
 .card-text p{font-size:.8rem;color:#64748b}
 .arrow{color:#cbd5e1;font-size:1.2rem;flex-shrink:0}
-.install-banner{display:none;background:#f5a623;color:#0b1f3a;border-radius:14px;padding:1rem 1.25rem;width:100%;max-width:400px;margin-bottom:1rem;text-align:center}
-.install-banner p{font-size:.85rem;font-weight:700;margin-bottom:.6rem}
-.install-btn{background:#0b1f3a;color:#f5a623;border:none;border-radius:10px;padding:10px 20px;font-family:'Cairo',sans-serif;font-size:.9rem;font-weight:800;cursor:pointer;width:100%}
 .foot{margin-top:2rem;color:rgba(255,255,255,.2);font-size:.72rem;text-align:center}
+
+/* iframe overlay */
+.iframe-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#0b1f3a;z-index:9999;flex-direction:column}
+.iframe-overlay.open{display:flex}
+.iframe-topbar{background:#0b1f3a;padding:.75rem 1rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.1);flex-shrink:0}
+.iframe-title{color:#fff;font-size:.9rem;font-weight:700}
+.back-btn{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#fff;border-radius:10px;padding:7px 16px;font-family:'Cairo',sans-serif;font-size:.85rem;font-weight:700;cursor:pointer}
+.back-btn:hover{background:rgba(255,255,255,.2)}
+.iframe-frame{flex:1;border:none;width:100%;height:100%}
+.iframe-loading{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:rgba(255,255,255,.5);font-size:.9rem;font-family:'Cairo',sans-serif}
 </style>
 </head>
 <body>
@@ -54,49 +64,63 @@ body{font-family:'Cairo',sans-serif;min-height:100vh;background:#0b1f3a;display:
 </div>
 
 <div class="cards">
-
-  <a class="app-card" href="https://script.google.com/macros/s/AKfycbwNPruhfAeXaAvSvziIhDFoXf2n7kjKUJuq1Qk2_f1KcHgQEM9ltLknHlzMt_Y-J5Nlig/exec">
+  <button class="app-card" onclick="openApp('https://script.google.com/macros/s/AKfycbwNPruhfAeXaAvSvziIhDFoXf2n7kjKUJuq1Qk2_f1KcHgQEM9ltLknHlzMt_Y-J5Nlig/exec','تطبيق السائق')">
     <div class="card-icon" style="background:linear-gradient(135deg,#1a6eff,#0044cc)">
       <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
     </div>
-    <div class="card-text">
-      <h2>تطبيق السائق</h2>
-      <p>عرض التحركات وإرسال الطلبات</p>
-    </div>
+    <div class="card-text"><h2>تطبيق السائق</h2><p>عرض التحركات وإرسال الطلبات</p></div>
     <div class="arrow">←</div>
-  </a>
+  </button>
 
-  <a class="app-card" href="https://script.google.com/macros/s/AKfycbwNPruhfAeXaAvSvziIhDFoXf2n7kjKUJuq1Qk2_f1KcHgQEM9ltLknHlzMt_Y-J5Nlig/exec?page=fayoum">
+  <button class="app-card" onclick="openApp('https://script.google.com/macros/s/AKfycbwNPruhfAeXaAvSvziIhDFoXf2n7kjKUJuq1Qk2_f1KcHgQEM9ltLknHlzMt_Y-J5Nlig/exec?page=fayoum','تطبيق الفيوم')">
     <div class="card-icon" style="background:linear-gradient(135deg,#22c55e,#15803d)">
       <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
     </div>
-    <div class="card-text">
-      <h2>تطبيق الفيوم</h2>
-      <p>سجل تحركات سيارات منطقة الفيوم</p>
-    </div>
+    <div class="card-text"><h2>تطبيق الفيوم</h2><p>سجل تحركات سيارات منطقة الفيوم</p></div>
     <div class="arrow">←</div>
-  </a>
+  </button>
 
-  <a class="app-card" href="https://script.google.com/macros/s/AKfycbwNPruhfAeXaAvSvziIhDFoXf2n7kjKUJuq1Qk2_f1KcHgQEM9ltLknHlzMt_Y-J5Nlig/exec?page=admin">
+  <button class="app-card" onclick="openApp('https://script.google.com/macros/s/AKfycbwNPruhfAeXaAvSvziIhDFoXf2n7kjKUJuq1Qk2_f1KcHgQEM9ltLknHlzMt_Y-J5Nlig/exec?page=admin','لوحة المدير')">
     <div class="card-icon" style="background:linear-gradient(135deg,#f59e0b,#b45309)">
       <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
     </div>
-    <div class="card-text">
-      <h2>لوحة المدير</h2>
-      <p>إحصائيات ومتابعة وإدارة الأسطول</p>
-    </div>
+    <div class="card-text"><h2>لوحة المدير</h2><p>إحصائيات ومتابعة وإدارة الأسطول</p></div>
     <div class="arrow">←</div>
-  </a>
-
+  </button>
 </div>
 
 <div class="foot">نظام إدارة أسطول طيبة — الزعيري &nbsp;|&nbsp; أسامه محمد</div>
 
+<!-- iframe overlay -->
+<div class="iframe-overlay" id="iframeOverlay">
+  <div class="iframe-topbar">
+    <button class="back-btn" onclick="closeApp()">⬅ رجوع</button>
+    <div class="iframe-title" id="iframeTitle"></div>
+    <div style="width:70px"></div>
+  </div>
+  <div style="position:relative;flex:1">
+    <div class="iframe-loading" id="iframeLoading">⏳ جاري التحميل...</div>
+    <iframe class="iframe-frame" id="iframeFrame" onload="document.getElementById('iframeLoading').style.display='none'"></iframe>
+  </div>
+</div>
+
 <script>
+function openApp(url, title) {
+  document.getElementById('iframeTitle').textContent = title;
+  document.getElementById('iframeLoading').style.display = 'block';
+  document.getElementById('iframeFrame').src = url;
+  document.getElementById('iframeOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeApp() {
+  document.getElementById('iframeOverlay').classList.remove('open');
+  document.getElementById('iframeFrame').src = '';
+  document.body.style.overflow = '';
+}
+
 let deferredPrompt;
 window.addEventListener('beforeinstallprompt', function(e) {
-  e.preventDefault();
-  deferredPrompt = e;
+  e.preventDefault(); deferredPrompt = e;
   document.getElementById('installBanner').style.display = 'block';
 });
 function installApp() {
