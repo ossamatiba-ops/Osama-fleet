@@ -1,7 +1,7 @@
 {
   "name": "تطبيق السائق - طيبة الزعيري",
-  "short_name": "السائق",
-  "description": "تطبيق السائق لعرض التحركات وإرسال الطلبات",
+  "short_name": "السائق - طيبة",
+  "description": "تطبيق السائق لعرض التحركات",
   "start_url": "/Osama-fleet/driver.html",
   "scope": "/Osama-fleet/",
   "display": "standalone",
