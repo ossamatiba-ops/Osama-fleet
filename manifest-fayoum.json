@@ -1,7 +1,7 @@
 {
   "name": "تطبيق الفيوم - طيبة الزعيري",
-  "short_name": "الفيوم",
-  "description": "تطبيق مشرف الفيوم لمتابعة سيارات المنطقة",
+  "short_name": "الفيوم - طيبة",
+  "description": "تطبيق مشرف الفيوم",
   "start_url": "/Osama-fleet/fayoum.html",
   "scope": "/Osama-fleet/",
   "display": "standalone",
