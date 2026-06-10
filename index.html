@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>أسطول طيبة - الزعيري</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Cairo',sans-serif;min-height:100vh;background:#0b1f3a;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem 1rem}
+.logo{text-align:center;margin-bottom:2.5rem}
+.logo-icon{width:80px;height:80px;background:linear-gradient(135deg,#1a6eff,#0044cc);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;box-shadow:0 0 0 12px rgba(26,110,255,.15)}
+.logo-icon svg{width:40px;height:40px;fill:none;stroke:#fff;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.logo h1{color:#fff;font-size:1.6rem;font-weight:800;margin-bottom:4px}
+.logo .sub{color:#f5a623;font-size:1rem;font-weight:700}
+.logo .by{color:rgba(255,255,255,.4);font-size:.78rem;margin-top:4px}
+.cards{display:flex;flex-direction:column;gap:1rem;width:100%;max-width:400px}
+.app-card{background:#fff;border-radius:18px;padding:1.5rem 1.75rem;display:flex;align-items:center;gap:1.25rem;text-decoration:none;box-shadow:0 8px 40px rgba(0,0,0,.25);transition:transform .2s,box-shadow .2s;cursor:pointer;border:none;width:100%;font-family:'Cairo',sans-serif}
+.app-card:hover{transform:translateY(-3px);box-shadow:0 14px 50px rgba(0,0,0,.35)}
+.app-card:active{transform:translateY(0)}
+.card-icon{width:54px;height:54px;border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.card-icon svg{width:28px;height:28px;fill:none;stroke:#fff;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.card-text{text-align:right;flex:1}
+.card-text h2{font-size:1rem;font-weight:800;color:#0b1f3a;margin-bottom:3px}
+.card-text p{font-size:.8rem;color:#64748b}
+.arrow{color:#cbd5e1;font-size:1.2rem;flex-shrink:0}
+.foot{margin-top:2rem;color:rgba(255,255,255,.2);font-size:.72rem;text-align:center}
+</style>
+</head>
+<body>
+<div class="logo">
+  <div class="logo-icon">
+    <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+  </div>
+  <h1>أسطول النقل</h1>
+  <div class="sub">طيبة - الزعيري</div>
+  <div class="by">بواسطة أسامه محمد</div>
+</div>
+
+<div class="cards">
+
+  <!-- تطبيق السائق -->
+  <a class="app-card" href="https://script.google.com/macros/s/AKfycbwNPruhfAeXaAvSvziIhDFoXf2n7kjKUJuq1Qk2_f1KcHgQEM9ltLknHlzMt_Y-J5Nlig/exec" target="_blank">
+    <div class="card-icon" style="background:linear-gradient(135deg,#1a6eff,#0044cc)">
+      <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+    </div>
+    <div class="card-text">
+      <h2>تطبيق السائق</h2>
+      <p>عرض التحركات وإرسال الطلبات</p>
+    </div>
+    <div class="arrow">←</div>
+  </a>
+
+  <!-- تطبيق الفيوم -->
+  <a class="app-card" href="https://script.google.com/macros/s/AKfycbwNPruhfAeXaAvSvziIhDFoXf2n7kjKUJuq1Qk2_f1KcHgQEM9ltLknHlzMt_Y-J5Nlig/exec?page=fayoum" target="_blank">
+    <div class="card-icon" style="background:linear-gradient(135deg,#22c55e,#15803d)">
+      <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    </div>
+    <div class="card-text">
+      <h2>تطبيق الفيوم</h2>
+      <p>سجل تحركات سيارات منطقة الفيوم</p>
+    </div>
+    <div class="arrow">←</div>
+  </a>
+
+  <!-- لوحة المدير -->
+  <a class="app-card" href="https://script.google.com/macros/s/AKfycbwNPruhfAeXaAvSvziIhDFoXf2n7kjKUJuq1Qk2_f1KcHgQEM9ltLknHlzMt_Y-J5Nlig/exec?page=admin" target="_blank">
+    <div class="card-icon" style="background:linear-gradient(135deg,#f59e0b,#b45309)">
+      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+    </div>
+    <div class="card-text">
+      <h2>لوحة المدير</h2>
+      <p>إحصائيات ومتابعة وإدارة الأسطول</p>
+    </div>
+    <div class="arrow">←</div>
+  </a>
+
+</div>
+
+<div class="foot">نظام إدارة أسطول طيبة — الزعيري &nbsp;|&nbsp; أسامه محمد</div>
+</body>
+</html>
