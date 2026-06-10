@@ -4,6 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>أسطول طيبة - الزعيري</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0b1f3a">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="أسطول طيبة">
+<link rel="apple-touch-icon" href="icon-192.png">
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -15,7 +22,7 @@ body{font-family:'Cairo',sans-serif;min-height:100vh;background:#0b1f3a;display:
 .logo .sub{color:#f5a623;font-size:1rem;font-weight:700}
 .logo .by{color:rgba(255,255,255,.4);font-size:.78rem;margin-top:4px}
 .cards{display:flex;flex-direction:column;gap:1rem;width:100%;max-width:400px}
-.app-card{background:#fff;border-radius:18px;padding:1.5rem 1.75rem;display:flex;align-items:center;gap:1.25rem;text-decoration:none;box-shadow:0 8px 40px rgba(0,0,0,.25);transition:transform .2s,box-shadow .2s;cursor:pointer;border:none;width:100%;font-family:'Cairo',sans-serif}
+.app-card{background:#fff;border-radius:18px;padding:1.5rem 1.75rem;display:flex;align-items:center;gap:1.25rem;text-decoration:none;box-shadow:0 8px 40px rgba(0,0,0,.25);transition:transform .2s,box-shadow .2s}
 .app-card:hover{transform:translateY(-3px);box-shadow:0 14px 50px rgba(0,0,0,.35)}
 .app-card:active{transform:translateY(0)}
 .card-icon{width:54px;height:54px;border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
@@ -24,10 +31,18 @@ body{font-family:'Cairo',sans-serif;min-height:100vh;background:#0b1f3a;display:
 .card-text h2{font-size:1rem;font-weight:800;color:#0b1f3a;margin-bottom:3px}
 .card-text p{font-size:.8rem;color:#64748b}
 .arrow{color:#cbd5e1;font-size:1.2rem;flex-shrink:0}
+.install-banner{display:none;background:#f5a623;color:#0b1f3a;border-radius:14px;padding:1rem 1.25rem;width:100%;max-width:400px;margin-bottom:1rem;align-items:center;gap:1rem;font-weight:700;font-size:.88rem;cursor:pointer}
+.install-banner svg{width:24px;height:24px;fill:none;stroke:#0b1f3a;stroke-width:2;flex-shrink:0}
 .foot{margin-top:2rem;color:rgba(255,255,255,.2);font-size:.72rem;text-align:center}
 </style>
 </head>
 <body>
+
+<div class="install-banner" id="installBanner" onclick="installApp()">
+  <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+  <span>اضغط هنا لتثبيت التطبيق على موبايلك</span>
+</div>
+
 <div class="logo">
   <div class="logo-icon">
     <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
@@ -39,7 +54,6 @@ body{font-family:'Cairo',sans-serif;min-height:100vh;background:#0b1f3a;display:
 
 <div class="cards">
 
-  <!-- تطبيق السائق -->
   <a class="app-card" href="https://script.google.com/macros/s/AKfycbwNPruhfAeXaAvSvziIhDFoXf2n7kjKUJuq1Qk2_f1KcHgQEM9ltLknHlzMt_Y-J5Nlig/exec" target="_blank">
     <div class="card-icon" style="background:linear-gradient(135deg,#1a6eff,#0044cc)">
       <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
@@ -51,7 +65,6 @@ body{font-family:'Cairo',sans-serif;min-height:100vh;background:#0b1f3a;display:
     <div class="arrow">←</div>
   </a>
 
-  <!-- تطبيق الفيوم -->
   <a class="app-card" href="https://script.google.com/macros/s/AKfycbwNPruhfAeXaAvSvziIhDFoXf2n7kjKUJuq1Qk2_f1KcHgQEM9ltLknHlzMt_Y-J5Nlig/exec?page=fayoum" target="_blank">
     <div class="card-icon" style="background:linear-gradient(135deg,#22c55e,#15803d)">
       <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
@@ -63,7 +76,6 @@ body{font-family:'Cairo',sans-serif;min-height:100vh;background:#0b1f3a;display:
     <div class="arrow">←</div>
   </a>
 
-  <!-- لوحة المدير -->
   <a class="app-card" href="https://script.google.com/macros/s/AKfycbwNPruhfAeXaAvSvziIhDFoXf2n7kjKUJuq1Qk2_f1KcHgQEM9ltLknHlzMt_Y-J5Nlig/exec?page=admin" target="_blank">
     <div class="card-icon" style="background:linear-gradient(135deg,#f59e0b,#b45309)">
       <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
@@ -78,5 +90,25 @@ body{font-family:'Cairo',sans-serif;min-height:100vh;background:#0b1f3a;display:
 </div>
 
 <div class="foot">نظام إدارة أسطول طيبة — الزعيري &nbsp;|&nbsp; أسامه محمد</div>
+
+<script>
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt', function(e) {
+  e.preventDefault();
+  deferredPrompt = e;
+  document.getElementById('installBanner').style.display = 'flex';
+});
+function installApp() {
+  if (!deferredPrompt) return;
+  deferredPrompt.prompt();
+  deferredPrompt.userChoice.then(function(result) {
+    deferredPrompt = null;
+    document.getElementById('installBanner').style.display = 'none';
+  });
+}
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/Osama-fleet/sw.js');
+}
+</script>
 </body>
 </html>
