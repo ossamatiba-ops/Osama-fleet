@@ -1,0 +1,17 @@
+{
+  "name": "تطبيق الفيوم - طيبة الزعيري",
+  "short_name": "الفيوم",
+  "description": "تطبيق مشرف الفيوم لمتابعة سيارات المنطقة",
+  "start_url": "/Osama-fleet/fayoum.html",
+  "scope": "/Osama-fleet/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0d2b0d",
+  "theme_color": "#0d2b0d",
+  "lang": "ar",
+  "dir": "rtl",
+  "icons": [
+    {"src": "icon-192.png","sizes": "192x192","type": "image/png","purpose": "any maskable"},
+    {"src": "icon-512.png","sizes": "512x512","type": "image/png","purpose": "any maskable"}
+  ]
+}
