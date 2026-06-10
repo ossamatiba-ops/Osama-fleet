@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>لوحة المدير - طيبة الزعيري</title>
+<link rel="manifest" href="manifest-admin.json">
+<meta name="theme-color" content="#1a0a00">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="المدير - طيبة">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Cairo',sans-serif;min-height:100vh;background:#1a0a00;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem 1rem}
+.logo-icon{width:80px;height:80px;background:linear-gradient(135deg,#f59e0b,#b45309);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;box-shadow:0 0 0 12px rgba(245,158,11,.15)}
+.logo-icon svg{width:40px;height:40px;fill:none;stroke:#fff;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+h1{color:#fff;font-size:1.4rem;font-weight:800;text-align:center;margin-bottom:4px}
+.sub{color:#f59e0b;font-size:.95rem;font-weight:700;text-align:center;margin-bottom:2rem}
+.install-banner{display:none;background:#f59e0b;color:#1a0a00;border-radius:14px;padding:1rem 1.25rem;width:100%;max-width:380px;margin-bottom:1rem;text-align:center}
+.install-banner p{font-size:.85rem;font-weight:700;margin-bottom:.6rem}
+.install-btn{background:#1a0a00;color:#f59e0b;border:none;border-radius:10px;padding:10px 20px;font-family:'Cairo',sans-serif;font-size:.9rem;font-weight:800;cursor:pointer;width:100%}
+.open-btn{background:linear-gradient(135deg,#f59e0b,#b45309);color:#fff;border:none;border-radius:16px;padding:1.25rem;width:100%;max-width:380px;font-family:'Cairo',sans-serif;font-size:1rem;font-weight:800;cursor:pointer;box-shadow:0 8px 30px rgba(245,158,11,.3);text-decoration:none;display:block;text-align:center}
+.manual{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:14px;padding:1rem;width:100%;max-width:380px;margin-top:1rem;display:none}
+.manual h3{color:#fff;font-size:.85rem;font-weight:700;margin-bottom:.6rem}
+.manual p{color:rgba(255,255,255,.6);font-size:.78rem;line-height:1.9}
+.step{color:#f59e0b;font-weight:700}
+.foot{margin-top:2rem;color:rgba(255,255,255,.2);font-size:.72rem;text-align:center}
+</style>
+</head>
+<body>
+
+<div class="install-banner" id="installBanner">
+  <p>📲 ثبت لوحة المدير على جهازك!</p>
+  <button class="install-btn" onclick="installApp()">📥 ثبت التطبيق الآن</button>
+</div>
+
+<div class="logo-icon">
+  <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+</div>
+<h1>لوحة المدير</h1>
+<div class="sub">طيبة - الزعيري</div>
+
+<a class="open-btn" href="https://script.google.com/macros/s/AKfycbwNPruhfAeXaAvSvziIhDFoXf2n7kjKUJuq1Qk2_f1KcHgQEM9ltLknHlzMt_Y-J5Nlig/exec?page=admin">
+  🛠 دخول لوحة المدير
+</a>
+
+<div class="manual" id="manual">
+  <h3>📌 طريقة التثبيت:</h3>
+  <p id="manualSteps"></p>
+</div>
+
+<div class="foot">نظام إدارة أسطول طيبة — الزعيري</div>
+
+<script>
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt', function(e) {
+  e.preventDefault(); deferredPrompt = e;
+  document.getElementById('installBanner').style.display = 'block';
+});
+function installApp() {
+  if (!deferredPrompt) return;
+  deferredPrompt.prompt();
+  deferredPrompt.userChoice.then(function() {
+    deferredPrompt = null;
+    document.getElementById('installBanner').style.display = 'none';
+  });
+}
+window.addEventListener('load', function() {
+  var ua = navigator.userAgent;
+  var manual = document.getElementById('manual');
+  var steps = document.getElementById('manualSteps');
+  if (/iPhone|iPad|iPod/i.test(ua)) {
+    manual.style.display = 'block';
+    steps.innerHTML = '<span class="step">1.</span> اضغط زرار المشاركة 🔗<br><span class="step">2.</span> اختار "إضافة إلى الشاشة الرئيسية"<br><span class="step">3.</span> اضغط "إضافة"';
+  } else if (/Android/i.test(ua)) {
+    setTimeout(function() {
+      if (!deferredPrompt) {
+        manual.style.display = 'block';
+        steps.innerHTML = '<span class="step">1.</span> اضغط النقاط الثلاثة ⋮<br><span class="step">2.</span> اختار "إضافة إلى الشاشة الرئيسية"<br><span class="step">3.</span> اضغط "إضافة"';
+      }
+    }, 2000);
+  } else {
+    manual.style.display = 'block';
+    steps.innerHTML = '<span class="step">1.</span> اضغط أيقونة التثبيت في شريط العنوان ⊕<br><span class="step">2.</span> أو من قائمة المتصفح اختار "تثبيت التطبيق"';
+  }
+});
+if ('serviceWorker' in navigator) { navigator.serviceWorker.register('/Osama-fleet/sw.js'); }
+</script>
+</body>
+</html>
